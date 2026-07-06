@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Prediction Result | OptiCrop AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="glass-card result-card">
+
+        <img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+
+        <h1>🌾 Prediction Result</h1>
+
+        <p class="subtitle">
+            Based on your soil nutrients and environmental conditions,
+            our AI recommends the following crop:
+        </p>
+
+        <div class="crop-box">
+
+            <h2 class="crop-name">
+                {{ prediction }}
+            </h2>
+
+            <img src="{{ url_for('static',
+            filename='crops/' + image) }}"
+
+            class="crop-image">
+
+            <div class="info-box">
+
+               <h3>📖 Crop Description</h3>
+
+               <p>{{ info.description }}</p>
+
+               <br>
+
+               <h3>🌾 Suitable Season</h3>
+
+               <p>{{ info.season }}</p>
+
+               <br>
+
+               <h3>🧪 Ideal Soil pH</h3>
+
+               <p>{{ info.ph }}</p>
+
+               <br>
+
+               <h3>💧 Water Requirement</h3>
+
+               <p>{{ info.water }}</p>
+
+            </div>
+
+            <div class="tips-box">
+
+               <h3>🌱 Farming Tips</h3>
+
+               <ul>
+
+                   {% for tip in info.tips %}
+
+              <li>✅ {{ tip }}</li>
+
+                   {% endfor %}
+
+              </ul>
+
+            </div>
+
+        </div>
+
+        <div class="recommendation-box">
+
+            <h3>🌱 Why this crop?</h3>
+
+            <ul>
+                <li>✔ Suitable for the given soil nutrients (N, P, K)</li>
+                <li>✔ Compatible with the current temperature</li>
+                <li>✔ Matches humidity and rainfall conditions</li>
+                <li>✔ Recommended by the trained Machine Learning model</li>
+            </ul>
+
+        </div>
+
+        <a href="/" class="back-btn">
+
+            🔄 Predict Again
+
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
